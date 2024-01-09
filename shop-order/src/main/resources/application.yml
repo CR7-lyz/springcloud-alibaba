@@ -1,0 +1,27 @@
+# 所有的订单服务使用809x（8091/8092/8093...）
+server:
+  port: 8091
+
+# 大家需要注意 1.使用 Tab 键添加缩进 2.属性值之前要加空格
+spring:
+  # 配置服务名称 （在注册服务时要保证唯一性）
+  application:
+    name: shop-order
+  # 配置spring数据源
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/zryc_mall_tmp?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8&useSSL=true
+    username: root
+    password: root
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+
+# mybatis-plus配置
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  type-aliases-package: com.zryc.shop.pojo
+  mapper-locations: classpath*:/mapper/**/*.xml
